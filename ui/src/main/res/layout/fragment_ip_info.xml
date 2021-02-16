@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.panzhiev.ui.ip_info.viewmodel.IpInfoViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:backgroundTint="@color/white">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ipLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            isIpError="@{vm.isIpError}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textColorHint="@color/hint_color"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/searchBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ipEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789."
+                android:hint="@string/search_ip_hint"
+                android:imeOptions="actionSearch"
+                android:inputType="numberDecimal"
+                android:maxLines="1"
+                android:onTextChanged="@{(text, start, before, count) -> vm.onIpChanged(text)}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/searchBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{() -> vm.onSearchClicked()}"
+            android:text="@string/search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ipLayout">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="@{vm.ipInfo}"
+                android:textColor="@color/black"
+                tools:text="Lorem Ipsum" />
+        </ScrollView>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:background="@drawable/list_shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ipLayout" />
+
+        <ProgressBar
+            isVisible="@{vm.isProgress}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/blue_200"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

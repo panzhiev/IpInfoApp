@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
+    <item android:gravity="fill">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/blue_500" />
+        </shape>
+    </item>
+    <item
+        android:width="100dp"
+        android:height="100dp"
+        android:drawable="@drawable/image_ip"
+        android:gravity="center" />
+</layer-list>

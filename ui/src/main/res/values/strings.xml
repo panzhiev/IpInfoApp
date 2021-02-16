@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Ip Info</string>
+    <string name="search">Search</string>
+    <string name="search_ip_hint">Type your IP</string>
+    <string name="ip_error">Ip address is not valid</string>
+    <string name="common_error">Something went wrong. Try again later…</string>
+</resources>
