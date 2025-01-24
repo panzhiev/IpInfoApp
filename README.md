@@ -1,1 +1,1 @@
-# IpInfoApp - test application for Beat Technology.
+# IpInfoApp - test application.
